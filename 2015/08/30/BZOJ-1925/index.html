@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>my new post | Hexo</title>
+    <title>BZOJ 1925 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="G cjh">
@@ -13,13 +13,14 @@
     
     <meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my new post">
-<meta property="og:url" content="http://yoursite.com/2015/08/12/my-new-post/index.html">
+<meta property="og:title" content="BZOJ 1925">
+<meta property="og:url" content="http://yoursite.com/2015/08/30/BZOJ-1925/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description">
-<meta property="og:updated_time" content="2015-08-30T06:51:01.709Z">
+<meta property="og:image" content="http://i1.tietuku.com/b95bbb2963599615.jpg">
+<meta property="og:updated_time" content="2015-08-30T08:30:51.715Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my new post">
+<meta name="twitter:title" content="BZOJ 1925">
 <meta name="twitter:description">
 
     
@@ -76,14 +77,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/08/12/my-new-post/" title="my new post" itemprop="url">my new post</a>
+      <a href="/2015/08/30/BZOJ-1925/" title="BZOJ 1925" itemprop="url">BZOJ 1925</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="G cjh" target="_blank" itemprop="author">G cjh</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-12T13:47:47.000Z" itemprop="datePublished"> 發表於 2015-08-12</time>
+    <time datetime="2015-08-30T07:08:52.000Z" itemprop="datePublished"> 發表於 2015-08-30</time>
     
   </p>
 </header>
@@ -92,16 +93,35 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BZOJ_1925_状压DP"><span class="toc-number">1.</span> <span class="toc-text">BZOJ 1925 状压DP</span></a></li></ol>
 		
 		</div>
 		
-		<a id="more"></a>
+		<p> <img src="http://i1.tietuku.com/b95bbb2963599615.jpg" alt="BZOJ 1925"><br>  <a id="more"></a></p>
+<h2 id="BZOJ_1925_状压DP">BZOJ 1925 状压DP</h2><p>  Description</p>
+<p>传说很久以前，大地上居住着一种神秘的生物：地精。 地精喜欢住在连绵不绝的山脉中。具体地说，一座长度为 N 的山脉 H可分 为从左到右的 N 段，每段有一个独一无二的高度 Hi，其中Hi是1到N 之间的正 整数。 如果一段山脉比所有与它相邻的山脉都高，则这段山脉是一个山峰。位于边 缘的山脉只有一段相邻的山脉，其他都有两段（即左边和右边）。 类似地，如果一段山脉比所有它相邻的山脉都低，则这段山脉是一个山谷。 地精们有一个共同的爱好——饮酒，酒馆可以设立在山谷之中。地精的酒馆 不论白天黑夜总是人声鼎沸，地精美酒的香味可以飘到方圆数里的地方。 地精还是一种非常警觉的生物，他们在每座山峰上都可以设立瞭望台，并轮 流担当瞭望工作，以确保在第一时间得知外敌的入侵。 地精们希望这N 段山脉每段都可以修建瞭望台或酒馆的其中之一，只有满足 这个条件的整座山脉才可能有地精居住。 现在你希望知道，长度为N 的可能有地精居住的山脉有多少种。两座山脉A 和B不同当且仅当存在一个 i，使得 Ai≠Bi。由于这个数目可能很大，你只对它 除以P的余数感兴趣。<br>Input</p>
+<p>仅含一行，两个正整数 N, P。<br>Output</p>
+<p>仅含一行，一个非负整数，表示你所求的答案对P取余 之后的结果。<br>Sample Input</p>
+<p>4 7<br>Sample Output</p>
+<p>3<br>HINT</p>
+<p>对于 20%的数据，满足 N≤10；<br>对于 40%的数据，满足 N≤18；<br>对于 70%的数据，满足 N≤550；<br>对于 100%的数据，满足 3≤N≤4200，P≤109</p>
+<p>这道题是我见过的代码最短的状压DP（虽然我觉得他不像是），对于那些什么下降啊，抖动啊，没看懂，所以只好用数学公式推。。。</p>
+<ol>
+<li>设定f[i][j] 为共i位，且第一位为j的下降种类数（上升你也随便），g[i][j]为上升种类数于是就有了 f[i][j] = g[i][i - j + 1]</li>
+<li><figure class="highlight"><figcaption><span>= g[i - 1][k](k = 1 ... j - 1)```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> 3. `f[i][j] = f[i - 1][k](k = i - j + 1 ... i)`&#10; 4. `f[i][j] - f[i][j - 1] = f[i - 1][i - j + 1]`&#10; &#28982;&#21518;&#36825;&#39064;&#23601;ok&#20102;&#65292;&#33267;&#20110;&#21345;&#20869;&#23384;&#65292;&#28378;&#21160;&#25968;&#32452;&#31070;&#39532;&#30340;YY&#21543;&#65292;233333&#10;``` cpp&#10;#include&#60;iostream&#62;&#10;#include&#60;cstdio&#62;&#10;#include&#60;cstring&#62;&#10;#include&#60;algorithm&#62;&#10;&#10;using namespace std;&#10;&#10;int n, p;&#10;int f[2][4205];&#10;&#10;int main()&#10;&#123;&#10;&#9;scanf(&#34;%d%d&#34;, &#38;n, &#38;p);&#10;&#9;f[0][2] = 1; f[0][1] = 0;&#10;&#9;int x = 0, y = 1;&#10;&#9;for(int i = 3; i &#60;= n; ++i)&#10;&#9;&#123;&#10;&#9;  for(int j = 1; j &#60;= i; ++j)&#10;&#9;    &#123;&#10;&#9;    &#9;f[y][j] = f[y][j - 1] + f[x][i - j + 1];&#10;&#9;    &#9;f[y][j] %= p;&#10;&#9;    &#125;&#10;&#9;&#9;swap(x, y);&#10;    &#125;&#10;&#9;if(n == 1)&#123;&#10;&#9;&#9;printf(&#34;1\n&#34;); return 0;&#10;&#9;&#125;&#10;&#9;int ans = 0;&#10;&#9;for(int i = 1; i &#60;= n; ++i)&#10;&#9;&#123;&#10;&#9;&#9;ans += f[x][i];&#10;&#9;&#9;ans %= p;&#10;&#9;&#125;&#10;&#9;ans = ans * 2 % p;&#10;&#9;printf(&#34;%d\n&#34;, ans);&#10;&#9;return 0;&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>EGOIST</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/状压DP/">状压DP</a>
+  </div>
 
 </div>
 
@@ -109,7 +129,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/08/12/my-new-post/" data-title="my new post | Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2015/08/30/BZOJ-1925/" data-title="BZOJ 1925 | Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -123,19 +143,27 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/08/30/BZOJ-1925/" title="BZOJ 1925">
+ <a href="/2015/08/30/hello-world/" title="Hello World">
   <strong>上一篇：</strong><br/>
   <span>
-  BZOJ 1925</span>
+  Hello World</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2015/08/12/my-new-post/"  title="my new post">
+ <strong>下一篇：</strong><br/> 
+ <span>my new post
+</span>
+</a>
+</div>
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/08/12/my-new-post/" data-title="my new post" data-url="http://yoursite.com/2015/08/12/my-new-post/"></div>
+	<div class="ds-thread" data-thread-key="2015/08/30/BZOJ-1925/" data-title="BZOJ 1925" data-url="http://yoursite.com/2015/08/30/BZOJ-1925/"></div>
 </section>
 
 
@@ -147,7 +175,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BZOJ_1925_状压DP"><span class="toc-number">1.</span> <span class="toc-text">BZOJ 1925 状压DP</span></a></li></ol>
  
   </div>
 
