@@ -1,0 +1,534 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN.yml">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>EXGCD | Greh i Longinus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="G cjh">
+    
+
+    
+    <meta name="description" content="EXGCD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EXGCD">
+<meta property="og:url" content="http://yoursite.com/2015/10/26/EXGCD/index.html">
+<meta property="og:site_name" content="Greh i Longinus">
+<meta property="og:description" content="EXGCD">
+<meta property="og:image" content="http://i11.tietuku.com/d6f56b3ed98f68b3.jpg">
+<meta property="og:updated_time" content="2015-10-26T12:17:49.090Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EXGCD">
+<meta name="twitter:description" content="EXGCD">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Greh i Longinus" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/ll.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/4.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/4.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Greh i Longinus">Greh i Longinus</a></h1>
+				<h2 class="blog-motto">The smaller</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/26/EXGCD/" title="EXGCD" itemprop="url">EXGCD</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="G cjh" target="_blank" itemprop="author">G cjh</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-26T10:52:04.000Z" itemprop="datePublished"> 發表於 2015-10-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#EXGCD"><span class="toc-number">1.</span> <span class="toc-text">EXGCD</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#辗转相除法"><span class="toc-number">1.0.1.</span> <span class="toc-text">辗转相除法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扩展欧几里得算法"><span class="toc-number">1.0.2.</span> <span class="toc-text">扩展欧几里得算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem"><span class="toc-number">1.1.</span> <span class="toc-text">Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.1.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.1.2.</span> <span class="toc-text">2</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="EXGCD">EXGCD</h2><p><img src="http://i11.tietuku.com/d6f56b3ed98f68b3.jpg" alt=""></p>
+<a id="more"></a>
+<h4 id="辗转相除法"><strong>辗转相除法</strong></h4><p>千年之前，<del>业界毒瘤 Ευκλειδης（欧几里得）</del>，发明了欧几里得算法（辗转相除法），让我们先为这位先辈默哀3分钟。。。。。。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(b == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	gcd(b , a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设c=gcd(m,n), d=gcd(n,b)</p>
+<p>　　1.　∵c为m和n的公约数</p>
+<p>　　　　∴m能被c整除，n也能被c整除</p>
+<p>　　　　∴na也能被c整除  参照推论一</p>
+<p>　　　　∴m-na也能被c整除(即b能c整除)  参照推论二</p>
+<p>　　　　∴c为n和b的公约数</p>
+<p>　　　　∵d为n和b的最大公约数</p>
+<p>　　　　∴c≤d</p>
+<p>　　2.　同理可证 d≤c</p>
+<p>　　　　∵d为n和b的公约数</p>
+<p>　　　　∴n能被d整除，b也能被d整除</p>
+<p>　　　　∴na也能被d整除  参照推论一</p>
+<p>　　　　∴na+b也能被d整除(即m能d整除)  参照推论二</p>
+<p>　　　　∴d为m和n的公约数</p>
+<p>　　　　∵c为m和n的最大公约数</p>
+<p>　　　　∴d≤c</p>
+<p>综上所述：c=d，即gcd(m,n)=gcd(n,r) .□</p>
+<p>当然中国的九章算术也提出了更相减损术，在这里就不再介绍了。</p>
+<h4 id="扩展欧几里得算法"><strong>扩展欧几里得算法</strong></h4><p>  扩展欧几里得算法是算法竞赛，也是noip的一项重点内容。<br>  对于任意正整数 a , b;<br>  总有<br>  a <em> x1 + b </em> y1 = gcd(a, b);<br>  b <em> x2 + a % b </em> y2 = gcd(b, a % b);<br>  ∵ gcd(a + b) = gcd(b + a % b);<br>  ∴ a <em> x1 + b </em> y1 = b <em> x2 + (a - (a / b) </em> b) <em> y2;<br>  注：(c++ 中 a % b = a - (a / b) - b)<br>  整理得 x1 = y2 , y1 = x2 - (a / b) </em> y2;<br>  c++ 实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span>&amp;x, <span class="keyword">int</span>&amp;y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(b == <span class="number">0</span>) &#123;</span><br><span class="line">		x = <span class="number">1</span>, y = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans = exgcd(b, a % b, x, y);</span><br><span class="line">	<span class="keyword">int</span> = x; </span><br><span class="line">	x = y, y = t - a / b * y;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>俗话说“<del>纸上得来终觉浅，绝知此事要躬行</del>”。下面看两个简单的应用。</p>
+<h3 id="Problem"><strong>Problem</strong></h3><h4 id="1"><strong>1</strong></h4><p>总时间限制: 1000ms 内存限制: 65536kB<br>描述:<br>给定正整数a，b，c。求不定方程 ax+by=c 关于未知数x和y的所有非负整数解组数。</p>
+<p>输入<br>一行，包含三个正整数a，b，c，两个整数之间用单个空格隔开。每个数均不大于1000。<br>输出<br>一个整数，即不定方程的非负整数解组数。<br>样例输入:<br>2 3 18<br>样例输出:<br>4</p>
+<p>首先这道题数据范围暴力是完全可以跑出来的，但如果遇到变态的出题人就会毫不犹豫的卡掉你，虽然不知道这是不是最优算法，但下面推导的要优化好多。</p>
+<ol>
+<li>当 c ≡ k （mod gcd（a, b）)， k ≠ 0时;<br>显然解的组数为零；</li>
+<li>当 gcd(a, b) | c 时；<br>原方程的一组整数解为<br>x1 = x <em> (c / d), y1 = x </em> (c / d);<br>则所有的整数解可以表示为<br>Xn = x1 + (b / d) <em> t, Yn = y1 + (a / d) </em> t, t ∈ Z；<br>∵ Xn &gt;= 0, Yn &gt;= 0<br>∴  t ∈（-x <em> d / b, d </em> y / a）;</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x, y, a, b, c;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(b == <span class="number">0</span>) &#123;</span><br><span class="line">		x = <span class="number">1</span>, y = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans = exgcd(b, a % b, x, y);</span><br><span class="line">	<span class="keyword">int</span> t = x;</span><br><span class="line">	x = y, y = t - a / b * y;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">	<span class="keyword">int</span> d = exgcd(a, b, x, y);</span><br><span class="line">	<span class="keyword">if</span>(c % d == <span class="number">0</span>) &#123;</span><br><span class="line">		x = x * (c / d), y = y * (c / d);</span><br><span class="line">		<span class="keyword">int</span> ans = <span class="built_in">floor</span>(<span class="number">1.0</span> * y * d / a) - <span class="built_in">ceil</span>((-<span class="number">1.0</span>) * x * d / b) + <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>, ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"0"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2"><strong>2</strong></h4><p>描述<br>求关于x的同余方程ax ≡ 1 (mod b)的最小正整数解。<br>格式<br>输入格式</p>
+<p>输入只有一行，包含两个正整数a, b，用一个空格隔开。<br>输出格式</p>
+<p>输出只有一行，包含一个正整数x0，即最小正整数解。输入数据保证一定有解。<br>样例1<br>样例输入:</p>
+<p>3 10<br>样例输出:</p>
+<p>7<br>限制<br>每个测试点1s<br>提示<br>对于40%的数据，2 ≤b≤ 1,000；<br>对于60%的数据，2 ≤b≤ 50,000,000；<br>对于100%的数据，2 ≤a, b≤ 2,000,000,000</p>
+<p>对于这题简单的EXGCD， 原题可转化为 ax - by = 1, 因为减号不影响，改为加号就好了， 最后求出一组解，x = (x + b) % b, 得出最小解。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span>  a, b, x, y;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">long</span> <span class="keyword">long</span>  <span class="title">exgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span>  a, <span class="keyword">long</span> <span class="keyword">long</span>  b, <span class="keyword">long</span> <span class="keyword">long</span>  &amp;x, <span class="keyword">long</span> <span class="keyword">long</span>  &amp;y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(b == <span class="number">0</span>) &#123;</span><br><span class="line">		x = <span class="number">1</span>, y = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span>  ans = exgcd(b, a % b, x, y);</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span>  t = x; </span><br><span class="line">	x = y, y = t - a / b * y;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;a, &amp;b);</span><br><span class="line">	exgcd(a, b, x, y);</span><br><span class="line">	x = (x + b) % b;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>, x);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>EGOIST </p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/数论/">数论</a><a href="/tags/欧几里得算法/">欧几里得算法</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/10/26/EXGCD/" data-title="EXGCD | Greh i Longinus" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/10/25/10-25-2015/"  title="10.25.2015">
+ <strong>下一篇：</strong><br/> 
+ <span>10.25.2015
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/10/26/EXGCD/" data-title="EXGCD" data-url="http://yoursite.com/2015/10/26/EXGCD/"></div>
+</section>
+
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#EXGCD"><span class="toc-number">1.</span> <span class="toc-text">EXGCD</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#辗转相除法"><span class="toc-number">1.0.1.</span> <span class="toc-text">辗转相除法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扩展欧几里得算法"><span class="toc-number">1.0.2.</span> <span class="toc-text">扩展欧几里得算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem"><span class="toc-number">1.1.</span> <span class="toc-text">Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.1.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.1.2.</span> <span class="toc-text">2</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/DP/" title="DP">DP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/区间覆盖DP/" title="区间覆盖DP">区间覆盖DP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/宽搜/" title="宽搜">宽搜<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/深搜/" title="深搜">深搜<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/区间DP/" title="区间DP">区间DP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/欧几里得算法/" title="欧几里得算法">欧几里得算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数论/" title="数论">数论<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/状压DP/" title="状压DP">状压DP<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://1115825064.github.io" target="_blank" title="ELEVEN">ELEVEN</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 为弱小者颂歌,为生存者送葬. <br/>
+			Spielt das Lied der Dämmerung, bläst in die Dämmerung von Dudelsack, tot Brust Kreuz.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="G cjh">G cjh</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Gcjh"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
