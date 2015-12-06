@@ -4,24 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>VIJOS 1100 | Greh i Longinus</title>
+    <title>error message | Greh i Longinus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="G cjh">
     
 
     
-    <meta name="description">
+    <meta name="description" content="ERROR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VIJOS 1100">
-<meta property="og:url" content="http://yoursite.com/2015/08/30/VIJOS-1100/index.html">
+<meta property="og:title" content="error message">
+<meta property="og:url" content="http://yoursite.com/2015/12/06/error-message/index.html">
 <meta property="og:site_name" content="Greh i Longinus">
-<meta property="og:description">
-<meta property="og:image" content="http://i1.tietuku.com/258c070a518770d1.jpg">
-<meta property="og:updated_time" content="2015-08-30T08:32:38.222Z">
+<meta property="og:description" content="ERROR">
+<meta property="og:updated_time" content="2015-12-06T08:58:13.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VIJOS 1100">
-<meta name="twitter:description">
+<meta name="twitter:title" content="error message">
+<meta name="twitter:description" content="ERROR">
 
     
     <link rel="alternative" href="/atom.xml" title="Greh i Longinus" type="application/atom+xml">
@@ -77,14 +76,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/08/30/VIJOS-1100/" title="VIJOS 1100" itemprop="url">VIJOS 1100</a>
+      <a href="/2015/12/06/error-message/" title="error message" itemprop="url">error message</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="G cjh" target="_blank" itemprop="author">G cjh</a>
 		
   <p class="article-time">
-    <time datetime="2015-08-30T08:06:39.000Z" itemprop="datePublished"> 發表於 2015-08-30</time>
+    <time datetime="2015-12-06T02:11:05.000Z" itemprop="datePublished"> 發表於 2015-12-06</time>
     
   </p>
 </header>
@@ -93,17 +92,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VIJOS_1100"><span class="toc-number">1.</span> <span class="toc-text">VIJOS 1100</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ERROR"><span class="toc-number">1.</span> <span class="toc-text">ERROR</span></a></li></ol>
 		
 		</div>
 		
-		<p><img src="http://i1.tietuku.com/258c070a518770d1.jpg" alt="VIJOS 1100"><br><a id="more"></a></p>
-<h2 id="VIJOS_1100">VIJOS 1100</h2><p>描述<br>设一个n个节点的二叉树tree的中序遍历为（l,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：<br>subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数<br>若某个子树为空，规定其加分为1，叶子的加分就是叶节点本身的分数。不考虑它的空子树。<br>试求一棵符合中序遍历为（1,2,3,…,n）且加分最高的二叉树tree。要求输出；<br>（1）tree的最高加分<br>（2）tree的前序遍历<br>格式<br>输入格式</p>
-<p>第1行：一个整数n（n＜30），为节点个数。<br>第2行：n个用空格隔开的整数，为每个节点的分数（分数＜100）。<br>输出格式</p>
-<p>第1行：一个整数，为最高加分（结果不会超过4,000,000,000）。<br>第2行：n个用空格隔开的整数，为该树的前序遍历。<br>样例1<br>样例输入1[复制]</p>
-<p>5<br>5 7 1 2 10<br>样例输出1[复制]</p>
-<p>145<br>3 1 2 4 5<br>限制<br>每个测试点1s</p>
-<p>  对于这题，虽然他说这是tree（区间） dp，但我觉得这是一个区间dp，天大的阴谋。。。<br>  对于这题来说，从l， 到r （l &lt; r &lt; n) 更新一遍，用f[i]<a href="从i 到j">j</a> 记录答案，p[i][j]记录路径就ok 了，233333<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> <span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, p[<span class="number">35</span>][<span class="number">35</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> dp[<span class="number">35</span>][<span class="number">35</span>], w[<span class="number">35</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">long</span> <span class="keyword">long</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> k = <span class="number">0</span>;<span class="keyword">long</span> <span class="keyword">long</span>  jc = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(dp[l][r] &gt; <span class="number">0</span>) <span class="keyword">return</span> dp[l][r];</span><br><span class="line">	<span class="keyword">if</span>(l &gt; r) dp[l][r] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(l == r) dp[l][r] = w[l], p[l][r] = l;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">for</span>(k = l; k &lt;= r; ++k)</span><br><span class="line">			&#123;</span><br><span class="line">				jc = search(l, k - <span class="number">1</span>) * search(k + <span class="number">1</span>, r) + w[k];</span><br><span class="line">				<span class="keyword">if</span>(jc &gt; dp[l][r])&#123;</span><br><span class="line">					dp[l][r] = jc; p[l][r] = k;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[l][r];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> k = p[l][r];</span><br><span class="line">	<span class="keyword">if</span>(l &gt; r) <span class="keyword">return</span> ;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, k);</span><br><span class="line">	print(l, k - <span class="number">1</span>);</span><br><span class="line">	print(k + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="built_in">memset</span>(p, -<span class="number">1</span>, <span class="keyword">sizeof</span>(p));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;w[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, search(<span class="number">1</span>, n));</span><br><span class="line">	print(<span class="number">1</span>, n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+		<h2 id="ERROR">ERROR</h2><a id="more"></a>
+<p>1.标记忘清空<br>2.long long 忘记用“ll” 输出<br>3.数组开小<br>4.标记先更新，再打上标记</p>
 <p>EGOIST</p>
   
 	</div>
@@ -113,7 +107,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/区间DP/">区间DP</a>
+  <span></span> <a href="/tags/error/">error</a>
   </div>
 
 </div>
@@ -122,7 +116,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/08/30/VIJOS-1100/" data-title="VIJOS 1100 | Greh i Longinus" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2015/12/06/error-message/" data-title="error message | Greh i Longinus" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -136,18 +130,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/09/04/noip-2010-t4/" title="noip 2010 t4">
+ <a href="/2015/12/06/BZOJ-2243/" title="BZOJ 2243">
   <strong>上一篇：</strong><br/>
   <span>
-  noip 2010 t4</span>
+  BZOJ 2243</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/08/30/hello-world/"  title="Hello World">
+<a href="/2015/11/25/11-25-2015/"  title="BZOJ 2957">
  <strong>下一篇：</strong><br/> 
- <span>Hello World
+ <span>BZOJ 2957
 </span>
 </a>
 </div>
@@ -156,7 +150,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/08/30/VIJOS-1100/" data-title="VIJOS 1100" data-url="http://yoursite.com/2015/08/30/VIJOS-1100/"></div>
+	<div class="ds-thread" data-thread-key="2015/12/06/error-message/" data-title="error message" data-url="http://yoursite.com/2015/12/06/error-message/"></div>
 </section>
 
 
@@ -168,7 +162,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VIJOS_1100"><span class="toc-number">1.</span> <span class="toc-text">VIJOS 1100</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ERROR"><span class="toc-number">1.</span> <span class="toc-text">ERROR</span></a></li></ol>
  
   </div>
 
